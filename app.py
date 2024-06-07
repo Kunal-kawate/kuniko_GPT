@@ -2,7 +2,12 @@
 import streamlit as st
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyCIMWwOezgY48d1qUYLRkFH1dKUFpmhis8")
+headers = {
+    'authorization' : st.secrets['API_KEY'],
+    'content-type': 'application/json'
+}
+genai.configure(api_key=headers['authorization'])
+
 generation_config = {
   "temperature": 0.55,
   "top_p": 0.95,
